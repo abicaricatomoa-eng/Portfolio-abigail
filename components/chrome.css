@@ -8,11 +8,12 @@
 .hdr:focus-within { transform: none; }
 @media (prefers-reduced-motion: reduce) { .hdr { transition: color 0.4s var(--ease); } }
 .hdr::before { content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity 0.4s var(--ease), background-color 0.4s var(--ease);
-  background: rgb(238 235 229 / 0.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-paper); }
+  background: rgb(237 232 223 / 0.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-paper); }
 .hdr[data-scrolled]::before { opacity: 1; }
 .hdr[data-theme='ink'] { color: var(--on-ink); }
-.hdr[data-theme='ink']::before { background: rgb(13 12 14 / 0.82); border-bottom-color: var(--line-ink); }
-.hdr[data-theme='magenta']::before { background: rgb(228 0 124 / 0.9); border-bottom-color: rgb(13 12 14 / 0.2); }
+.hdr[data-theme='ink']::before { background: rgb(19 17 15 / 0.82); border-bottom-color: var(--line-ink); }
+.hdr[data-theme='magenta'] { color: var(--on-ink); }
+.hdr[data-theme='magenta']::before { background: rgb(160 6 90 / 0.88); border-bottom-color: rgb(238 232 222 / 0.16); }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .hdr::before { background: var(--paper); } .hdr[data-theme='ink']::before { background: var(--ink); } .hdr[data-theme='magenta']::before { background: var(--m); }
 }

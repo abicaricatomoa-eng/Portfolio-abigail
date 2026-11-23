@@ -1,6 +1,7 @@
 'use client';
 import { useId, type CSSProperties } from 'react';
 import './demos.css';
+import { C, INK, INK_2, M, M_LIGHT, PAPER, Y, alpha } from '@/lib/palette';
 
 // One small animated drawing per tool, showing what the tool does (no brand logos).
 // Animations run only while `run` is true (on screen and selected); otherwise the drawing rests on its final frame.
@@ -26,9 +27,9 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
   collage: () => (
     <g>
       <g className="cl" style={d(0)}><rect x="96" y="70" width="190" height="230" fill="#d9cdb8" transform="rotate(-7 191 185)" /><path d="M110 250 L180 170 L230 220 L270 180" stroke="#8a7a66" strokeWidth="3" transform="rotate(-7 191 185)" /></g>
-      <g className="cl" style={d(1)}><rect x="236" y="56" width="170" height="150" fill="#00a0df" transform="rotate(6 321 131)" /><circle cx="330" cy="120" r="34" fill="#ffe100" transform="rotate(6 321 131)" /></g>
-      <g className="cl" style={d(2)}><rect x="210" y="170" width="200" height="120" fill="#e4007c" transform="rotate(-3 310 230)" /><text x="226" y="248" fill="#fff" fontSize="40" style={{ fontFamily: 'var(--font-d)', fontStyle: 'italic' }} transform="rotate(-3 310 230)">recorte</text></g>
-      <g className="cl" style={d(3)}><rect x="140" y="214" width="96" height="96" fill="#efebe4" transform="rotate(10 188 262)" /><path d="M152 290 h70 M152 270 h56 M152 250 h70" stroke="#0d0c0e" strokeWidth="3" transform="rotate(10 188 262)" /></g>
+      <g className="cl" style={d(1)}><rect x="236" y="56" width="170" height="150" fill={C} transform="rotate(6 321 131)" /><circle cx="330" cy="120" r="34" fill={Y} transform="rotate(6 321 131)" /></g>
+      <g className="cl" style={d(2)}><rect x="210" y="170" width="200" height="120" fill={M} transform="rotate(-3 310 230)" /><text x="226" y="248" fill="#fff" fontSize="40" style={{ fontFamily: 'var(--font-d)', fontStyle: 'italic' }} transform="rotate(-3 310 230)">recorte</text></g>
+      <g className="cl" style={d(3)}><rect x="140" y="214" width="96" height="96" fill={PAPER} transform="rotate(10 188 262)" /><path d="M152 290 h70 M152 270 h56 M152 250 h70" stroke={INK} strokeWidth="3" transform="rotate(10 188 262)" /></g>
       <path className="cl-scissor" d="M60 320 l40 -26 M60 296 l40 26" stroke={ink} strokeWidth="2" />
     </g>
   ),
@@ -37,15 +38,15 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
     <g>
       {[0, 1, 2].map((i) => (
         <g key={i} className="ly" style={d(i)}>
-          <rect x="140" y="80" width="230" height="160" rx="4" fill={['#1f2a44', 'rgb(0 160 223 / .32)', 'rgb(239 235 228 / .04)'][i]} stroke={ink} strokeOpacity=".4" />
-          {i === 0 && <path d="M140 210 L212 145 L260 188 L302 152 L370 210 V240 H140Z" fill="#0d0c0e" />}
-          {i === 1 && <path d="M140 150 q57 -30 115 0 t115 0" stroke="#efebe4" strokeOpacity=".5" strokeWidth="2" />}
-          {i === 2 && <circle cx="312" cy="126" r="24" fill="#ffe100" />}
+          <rect x="140" y="80" width="230" height="160" rx="4" fill={['#1f2a44', alpha(C, 0.32), alpha(PAPER, 0.04)][i]} stroke={ink} strokeOpacity=".4" />
+          {i === 0 && <path d="M140 210 L212 145 L260 188 L302 152 L370 210 V240 H140Z" fill={INK} />}
+          {i === 1 && <path d="M140 150 q57 -30 115 0 t115 0" stroke={PAPER} strokeOpacity=".5" strokeWidth="2" />}
+          {i === 2 && <circle cx="312" cy="126" r="24" fill={Y} />}
         </g>
       ))}
       {[2, 1, 0].map((i, r) => (
         <g key={i} transform={`translate(440 ${118 + r * 34})`}>
-          <rect width="16" height="16" fill={['#1f2a44', '#00a0df', '#ffe100'][i]} stroke={ink} strokeOpacity=".4" />
+          <rect width="16" height="16" fill={['#1f2a44', C, Y][i]} stroke={ink} strokeOpacity=".4" />
           <text x="26" y="13" fill={ink} fontSize="14" style={{ fontFamily: 'var(--font-m)' }}>{c.layer} {i + 1}</text>
         </g>
       ))}
@@ -54,25 +55,25 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
   // pen tool: a Bézier drawn anchor by anchor, with handles
   ai: () => (
     <g>
-      <path className="pen" d="M70 260 C 130 90, 230 90, 260 190 S 400 300, 450 110" stroke="#e4007c" strokeWidth="4" pathLength={1} />
+      <path className="pen" d="M70 260 C 130 90, 230 90, 260 190 S 400 300, 450 110" stroke={M} strokeWidth="4" pathLength={1} />
       <g className="pen-h" stroke={ink} strokeWidth="1.2">
         <path d="M70 260 L130 90" /><path d="M230 90 L290 290" /><path d="M400 300 L450 110" />
         {[[130, 90], [290, 290], [400, 300]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5" fill="currentColor" />)}
       </g>
       {[[70, 260], [260, 190], [450, 110]].map(([x, y], i) => (
-        <rect key={i} className="pen-a" style={d(i)} x={x - 7} y={y - 7} width="14" height="14" fill="#0d0c0e" stroke={ink} strokeWidth="2" />
+        <rect key={i} className="pen-a" style={d(i)} x={x - 7} y={y - 7} width="14" height="14" fill={INK} stroke={ink} strokeWidth="2" />
       ))}
     </g>
   ),
   // grid: a page, its columns, and the text that sets itself on them
   id: () => (
     <g>
-      <rect x="120" y="30" width="280" height="300" fill="#efebe4" stroke={ink} strokeOpacity=".3" />
-      {[0, 1, 2, 3, 4, 5].map((i) => <rect key={i} className="gd-col" style={d(i)} x={140 + i * 41.6} y="50" width="34" height="260" fill="#e4007c" opacity=".12" />)}
-      <rect className="gd-txt" style={d(0)} x="140" y="60" width="200" height="22" fill="#0d0c0e" />
-      {[0, 1, 2, 3, 4, 5, 6].map((i) => <rect key={i} className="gd-txt" style={d(i + 1)} x="140" y={110 + i * 16} width={i % 3 === 2 ? 76 : 117} height="6" fill="#0d0c0e" opacity=".75" />)}
-      {[0, 1, 2, 3, 4].map((i) => <rect key={i} className="gd-txt" style={d(i + 3)} x="265" y={110 + i * 16} width="117" height="6" fill="#0d0c0e" opacity=".75" />)}
-      <rect className="gd-txt" style={d(8)} x="265" y="200" width="117" height="96" fill="#00a0df" />
+      <rect x="120" y="30" width="280" height="300" fill={PAPER} stroke={ink} strokeOpacity=".3" />
+      {[0, 1, 2, 3, 4, 5].map((i) => <rect key={i} className="gd-col" style={d(i)} x={140 + i * 41.6} y="50" width="34" height="260" fill={M} opacity=".12" />)}
+      <rect className="gd-txt" style={d(0)} x="140" y="60" width="200" height="22" fill={INK} />
+      {[0, 1, 2, 3, 4, 5, 6].map((i) => <rect key={i} className="gd-txt" style={d(i + 1)} x="140" y={110 + i * 16} width={i % 3 === 2 ? 76 : 117} height="6" fill={INK} opacity=".75" />)}
+      {[0, 1, 2, 3, 4].map((i) => <rect key={i} className="gd-txt" style={d(i + 3)} x="265" y={110 + i * 16} width="117" height="6" fill={INK} opacity=".75" />)}
+      <rect className="gd-txt" style={d(8)} x="265" y="200" width="117" height="96" fill={C} />
     </g>
   ),
   // keyframes: a value curve with its easing, and a dot riding it
@@ -80,24 +81,24 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
     <g>
       <path d="M60 300 H470 M60 300 V40" stroke={ink} strokeOpacity=".35" />
       {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => <path key={i} d={`M${60 + i * 58} 300 v8`} stroke={ink} strokeOpacity=".35" />)}
-      <path className="kf-curve" d="M80 270 C 250 270, 260 70, 440 70" stroke="#e4007c" strokeWidth="3.5" pathLength={1} />
+      <path className="kf-curve" d="M80 270 C 250 270, 260 70, 440 70" stroke={M} strokeWidth="3.5" pathLength={1} />
       <path d="M80 270 H180 M440 70 H340" stroke={ink} strokeWidth="1.2" strokeDasharray="4 4" />
-      <rect x="73" y="263" width="14" height="14" transform="rotate(45 80 270)" fill="#ffe100" />
-      <rect x="433" y="63" width="14" height="14" transform="rotate(45 440 70)" fill="#ffe100" />
-      <circle className="kf-dot" cx="80" cy="330" r="9" fill="#00a0df" />
+      <rect x="73" y="263" width="14" height="14" transform="rotate(45 80 270)" fill={Y} />
+      <rect x="433" y="63" width="14" height="14" transform="rotate(45 440 70)" fill={Y} />
+      <circle className="kf-dot" cx="80" cy="330" r="9" fill={C} />
     </g>
   ),
   // razor: clips on a timeline, a playhead, a cut
   pr: () => (
     <g>
       {[0, 1, 2].map((r) => <rect key={r} x="40" y={90 + r * 64} width="440" height="48" fill={ink} opacity=".05" />)}
-      <rect x="60" y="94" width="150" height="40" rx="3" fill="#00a0df" />
-      <g className="rz-a"><rect x="214" y="94" width="120" height="40" rx="3" fill="#e4007c" /></g>
-      <g className="rz-b"><rect x="334" y="94" width="120" height="40" rx="3" fill="#e4007c" /></g>
-      <rect x="110" y="158" width="260" height="40" rx="3" fill="#ffe100" opacity=".9" />
-      <rect x="60" y="222" width="340" height="40" rx="3" fill="#7a7480" />
+      <rect x="60" y="94" width="150" height="40" rx="3" fill={C} />
+      <g className="rz-a"><rect x="214" y="94" width="120" height="40" rx="3" fill={M} /></g>
+      <g className="rz-b"><rect x="334" y="94" width="120" height="40" rx="3" fill={M} /></g>
+      <rect x="110" y="158" width="260" height="40" rx="3" fill={Y} opacity=".9" />
+      <rect x="60" y="222" width="340" height="40" rx="3" fill="#7d746a" />
       {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => <path key={i} d={`M${40 + i * 44} 64 v10`} stroke={ink} strokeOpacity=".4" />)}
-      <g className="rz-head"><path d="M60 60 V290" stroke="#ff5aa8" strokeWidth="2" /><path d="M52 52 h16 l-8 10z" fill="#ff5aa8" /></g>
+      <g className="rz-head"><path d="M60 60 V290" stroke={M_LIGHT} strokeWidth="2" /><path d="M52 52 h16 l-8 10z" fill={M_LIGHT} /></g>
       <path className="rz-cut" d="M334 84 V146" stroke={ink} strokeWidth="2.5" />
     </g>
   ),
@@ -105,11 +106,11 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
   lr: (_c, u) => (
     <g>
       <defs>
-        <linearGradient id={`${u}-sky`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#f29e38" /><stop offset=".6" stopColor="#e4007c" /><stop offset="1" stopColor="#2b1a3a" /></linearGradient>
+        <linearGradient id={`${u}-sky`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#f29e38" /><stop offset=".6" stopColor={M} /><stop offset="1" stopColor="#2b1a3a" /></linearGradient>
       </defs>
       <rect x="40" y="40" width="330" height="240" fill={`url(#${u}-sky)`} />
-      <circle cx="250" cy="170" r="30" fill="#ffe100" />
-      <path d="M40 240 L130 190 L210 230 L300 180 L370 220 V280 H40Z" fill="#16141a" />
+      <circle cx="250" cy="170" r="30" fill={Y} />
+      <path d="M40 240 L130 190 L210 230 L300 180 L370 220 V280 H40Z" fill={INK_2} />
       <g className="lr-crop">
         <rect x="70" y="60" width="270" height="200" stroke="#fff" strokeWidth="2" />
         <path d="M160 60 V260 M250 60 V260 M70 126.6 H340 M70 193.3 H340" stroke="#fff" strokeOpacity=".6" />
@@ -123,7 +124,7 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
       <rect x="70" y="30" width="380" height="300" fill={ink} opacity=".05" />
       {c.checks.map((txt, i) => (
         <g key={txt} className="pf" style={d(i)}>
-          <circle cx="110" cy={80 + i * 52} r="15" fill="#e4007c" />
+          <circle cx="110" cy={80 + i * 52} r="15" fill={M} />
           <path d={`M102 ${80 + i * 52} l6 6 l11 -12`} stroke="#fff" strokeWidth="3" />
           <text x="142" y={87 + i * 52} fill={ink} fontSize="20" style={{ fontFamily: 'var(--font-m)' }}>{txt}</text>
         </g>
@@ -137,7 +138,7 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
       <text x="84" y="57" fill={ink} fontSize="17" style={{ fontFamily: 'var(--font-m)' }} className="ff-p">{c.prompt}</text>
       {[0, 1, 2, 3].map((i) => {
         const x = 60 + (i % 2) * 205, y = 92 + Math.floor(i / 2) * 132;
-        const fills = [['#101626', '#f2c14e'], ['#e4007c', '#ffe100'], ['#00a0df', '#efebe4'], ['#2b1a3a', '#f29e38']][i];
+        const fills = [['#101626', '#f2c14e'], [M, Y], [C, PAPER], ['#2b1a3a', '#f29e38']][i];
         return (
           <g key={i} className="ff-v" style={d(i)}>
             <rect x={x} y={y} width="195" height="122" fill={fills[0]} />
@@ -152,7 +153,7 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
   s3: (_c, u) => (
     <g>
       <defs>
-        <radialGradient id={`${u}-ball`} cx=".35" cy=".3" r=".75"><stop offset="0" stopColor="#ffd3ea" /><stop offset=".35" stopColor="#e4007c" /><stop offset="1" stopColor="#3a0020" /></radialGradient>
+        <radialGradient id={`${u}-ball`} cx=".35" cy=".3" r=".75"><stop offset="0" stopColor="#ffd3ea" /><stop offset=".35" stopColor={M} /><stop offset="1" stopColor="#3a0020" /></radialGradient>
       </defs>
       <ellipse cx="260" cy="310" rx="120" ry="16" fill={ink} opacity=".18" />
       <circle cx="260" cy="180" r="120" fill={`url(#${u}-ball)`} />
@@ -165,9 +166,9 @@ const DEMOS: Record<DemoId, (c: Copy, u: string) => React.ReactNode> = {
   cc: () => (
     <g>
       <g style={{ mixBlendMode: 'multiply' }}>
-        <circle className="cc-p cc-c" cx="260" cy="180" r="96" fill="#00a0df" />
-        <circle className="cc-p cc-m" cx="260" cy="180" r="96" fill="#e4007c" />
-        <circle className="cc-p cc-y" cx="260" cy="180" r="96" fill="#ffe100" />
+        <circle className="cc-p cc-c" cx="260" cy="180" r="96" fill={C} />
+        <circle className="cc-p cc-m" cx="260" cy="180" r="96" fill={M} />
+        <circle className="cc-p cc-y" cx="260" cy="180" r="96" fill={Y} />
       </g>
       <g stroke={ink} strokeWidth="1.5">
         <circle cx="260" cy="180" r="130" />

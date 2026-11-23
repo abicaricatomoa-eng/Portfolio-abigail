@@ -18,7 +18,11 @@ Next.js estático (`output: 'export'`) + TypeScript + GSAP. Español (`/es/`) e 
 
 ## Sistema
 
-- Tokens en `app/globals.css` (`--ink`, `--paper`, `--c/--m/--y`, `--m-deep`, `--m-light`). Marcas de imprenta en `components/print.tsx`.
+- Color: negro y papel cálidos de una misma familia, CMY de proceso ajustados al papel y un solo magenta como luz
+  (`--m-deep` en papel, `--m-light` en tinta, `--velvet` en el manifiesto, `--glow` apenas en las hojas oscuras). Tokens en
+  `app/globals.css`; los dibujos y estilos en línea usan `lib/palette.ts` con los mismos valores: nada de hex sueltos.
+  Los fondos de la galería son tonales y de poco croma, para que el color lo ponga el trabajo. Marcas de imprenta en
+  `components/print.tsx`.
 - Cada sección declara `data-hdr="paper|ink|magenta"`: el header toma ese color.
 - Entradas: `[data-reveal]` (o `data-reveal="clip"`, que sube con `clip-path`) y `<Lines>` con un solo IntersectionObserver
   (`components/Reveals.tsx`).

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { C, INK, M, Y, alpha } from '@/lib/palette';
 
 // Print marks shared by every section: registration target, crop marks, CMYK colour bar.
 
@@ -20,9 +21,10 @@ export function CropMarks() {
   );
 }
 
-const BAR = ['#00a0df', '#e4007c', '#ffe100', '#0d0c0e', 'rgb(0 160 223 / .5)', 'rgb(228 0 124 / .5)', 'rgb(255 225 0 / .5)', 'rgb(13 12 14 / .5)', 'rgb(13 12 14 / .25)', 'rgb(13 12 14 / .1)'];
-
-const BAR_DARK = ['#00a0df', '#e4007c', '#ffe100', '#efebe4', 'rgb(0 160 223 / .5)', 'rgb(228 0 124 / .5)', 'rgb(255 225 0 / .5)', 'rgb(239 235 228 / .5)', 'rgb(239 235 228 / .25)', 'rgb(239 235 228 / .1)'];
+// C, M, Y, K, then the same at half, and two tints of K: a press sheet's control strip
+const bar = (k: string) => [C, M, Y, k, alpha(C, 0.5), alpha(M, 0.5), alpha(Y, 0.5), alpha(k, 0.5), alpha(k, 0.25), alpha(k, 0.1)];
+const BAR = bar(INK);
+const BAR_DARK = bar('#EEE8DE');
 
 export function ColorBar({ className, dark }: { className?: string; dark?: boolean }) {
   return (

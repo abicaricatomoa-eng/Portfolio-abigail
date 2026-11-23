@@ -133,7 +133,6 @@ export function Work({ t }: { t: Dict['work'] }) {
                       <span>{w.client}</span>
                       {w.tag && <span className="wk-tag">{w.tag}</span>}
                     </span>
-                    <span className="wk-sw" aria-hidden="true">{w.palette.map(([, hex]) => <i key={hex} style={{ background: hex }} />)}</span>
                     <span className="wk-go"><span className="sr-only">{t.open}</span><span aria-hidden="true">→</span></span>
                   </span>
                 </button>

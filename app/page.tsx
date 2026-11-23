@@ -17,10 +17,10 @@ export default function RootRedirect() {
       <head>
         <script dangerouslySetInnerHTML={{ __html: redirectScript }} />
       </head>
-      <body style={{ background: '#0d0c0e', color: '#efebe4', fontFamily: 'Georgia, serif', padding: 24 }}>
+      <body style={{ background: '#13110f', color: '#eee8de', fontFamily: 'Georgia, serif', padding: 24 }}>
         <noscript>
           <p>
-            <a href={`${BASE_PATH}/es/`} style={{ color: '#ff5aa8' }}>Español</a> · <a href={`${BASE_PATH}/en/`} style={{ color: '#ff5aa8' }}>English</a>
+            <a href={`${BASE_PATH}/es/`} style={{ color: '#ee7fa8' }}>Español</a> · <a href={`${BASE_PATH}/en/`} style={{ color: '#ee7fa8' }}>English</a>
           </p>
         </noscript>
       </body>

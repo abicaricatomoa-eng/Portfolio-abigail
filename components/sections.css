@@ -39,12 +39,14 @@
 }
 
 /* manifesto: process magenta, ink type */
-.manifesto { background: var(--m); color: var(--ink); }
-.manifesto .label { color: var(--ink); }
+/* manifesto: velvet magenta, lit from the top right; cream type, the italic words in a lighter rose */
+.manifesto { background: var(--m-deep); background-image: var(--velvet); color: var(--on-ink); }
+.manifesto .label { color: var(--on-ink); }
 .mf-text { font-size: clamp(44px, 7.2vw, 128px); line-height: 1; margin-top: 36px; max-width: 16ch; }
-.mf-w:nth-child(4), .mf-w:nth-child(5) { font-style: italic; }
+.mf-w:nth-child(4), .mf-w:nth-child(5) { font-style: italic; color: #f6b9d0; }
 
 /* contact */
+.contact { background-image: var(--glow); }
 .ct-q { margin-top: 40px; font: 400 clamp(24px, 2.6vw, 40px)/1.1 var(--font-d); font-style: italic; color: var(--on-ink-muted); }
 .ct-big { font-size: clamp(88px, 19vw, 320px); line-height: 0.86; letter-spacing: -0.045em; margin-top: 10px; }
 .ct-big .ln > span { font-style: italic; }

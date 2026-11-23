@@ -2,22 +2,27 @@
    The site is a print run: paper and ink sheets, crop marks, registration targets, a CMYK colour bar,
    and the name printed in three plates that come into register. Magenta (process magenta) is the light. */
 :root {
-  --ink: #0d0c0e;
-  --ink-2: #16141a;
-  --ink-3: #1f1c23;
-  --paper: #eeebe5;
-  --paper-2: #e5e1d9;
-  --on-ink: #efebe4;
-  --on-ink-muted: #a29daa;
-  --on-paper: #0d0c0e;
-  --on-paper-muted: #57525d;
-  --line-ink: rgb(239 235 228 / 0.14);
-  --line-paper: rgb(13 12 14 / 0.16);
-  --c: #00a0df;
-  --m: #e4007c;
-  --y: #ffe100;
-  --m-deep: #b0005f; /* magenta text on paper (AA) */
-  --m-light: #ff5aa8; /* magenta text on ink (AA) */
+  /* warm black and warm paper: one family of neutrals (lib/palette.ts repeats these values) */
+  --ink: #13110f;
+  --ink-2: #1c1916;
+  --ink-3: #25211d;
+  --paper: #ede8df;
+  --paper-2: #e3dcd0;
+  --on-ink: #eee8de;
+  --on-ink-muted: #a39a8e; /* 6.8:1 on ink */
+  --on-paper: #13110f;
+  --on-paper-muted: #5c554d; /* 6.0:1 on paper */
+  --line-ink: rgb(238 232 222 / 0.13);
+  --line-paper: rgb(19 17 15 / 0.15);
+  /* process inks, tuned to sit on that paper rather than glow on a screen */
+  --c: #1a9bd7;
+  --m: #d10a6e;
+  --y: #f7d417;
+  --m-deep: #a0065a; /* magenta text on paper: 6.4:1 */
+  --m-light: #ee7fa8; /* magenta text on ink: 7.4:1 */
+  --velvet: radial-gradient(120% 130% at 88% 0%, #c40a68 0%, #a0065a 38%, #6a0a3c 78%, #4a0a2b 100%);
+  /* the magenta light falling on a dark sheet: barely there, never under small text */
+  --glow: radial-gradient(60% 55% at 12% 30%, rgb(209 10 110 / 0.11), rgb(209 10 110 / 0) 70%);
   --font-d: var(--font-display), 'Bodoni 72', Didot, Georgia, serif;
   --font-s: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
   --font-m: var(--font-mono), ui-monospace, Menlo, Consolas, monospace;
