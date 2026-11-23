@@ -39,7 +39,7 @@ export function Tools({ t }: { t: Dict['tools'] }) {
     <section id="herramientas" className="tools sec on-ink" ref={ref} data-hdr="ink">
       <div className="wrap">
         <header className="tl-head">
-          <SectionLabel n="03" text={t.label} />
+          <SectionLabel n="04" text={t.label} />
           <Lines text={t.title} className="display h-sec" />
           <p className="lead" data-reveal>{t.lead}</p>
         </header>

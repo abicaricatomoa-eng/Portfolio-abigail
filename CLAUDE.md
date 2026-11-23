@@ -20,7 +20,14 @@ Next.js estático (`output: 'export'`) + TypeScript + GSAP. Español (`/es/`) e 
 
 - Tokens en `app/globals.css` (`--ink`, `--paper`, `--c/--m/--y`, `--m-deep`, `--m-light`). Marcas de imprenta en `components/print.tsx`.
 - Cada sección declara `data-hdr="paper|ink|magenta"`: el header toma ese color.
-- Entradas: `[data-reveal]` y `<Lines>` con un solo IntersectionObserver (`components/Reveals.tsx`).
+- Entradas: `[data-reveal]` (o `data-reveal="clip"`, que sube con `clip-path`) y `<Lines>` con un solo IntersectionObserver
+  (`components/Reveals.tsx`).
+- Orden: portada → cinta → Trabajo (01) → Historia (02) → Proceso (03) → Herramientas (04) → manifiesto → Contacto (05);
+  `SECTIONS` en `components/Chrome.tsx` sigue ese orden (el header marca la sección actual y se esconde al bajar).
+- Galería de Trabajo: composición por proyecto en `content/work.ts` (`card`: foto, navegador, celulares o laptop;
+  `size` tall/wide/full y `shift`), dibujada en `components/Cover.tsx`; las capas `data-depth` tienen parallax
+  (GSAP, solo con movimiento permitido). `data-magnetic` (`components/Magnetic.tsx`) acerca un control al puntero fino.
+- Textura de papel: `body::after` estático, se apaga con `prefers-contrast: more` / `forced-colors`.
 - Carga (`Loader`) → `markReady()` → entrada de la portada (`onReady`, `lib/ready.ts`).
 - Proyectos: ficha en `components/Work.tsx` (barra fija, intro, brandboard, siguiente proyecto) y brandboard en
   `components/Brandboard.tsx` (datos en `messages/*.json` y `content/work.ts`, mismo layout en es/en). Texto atenuado de la

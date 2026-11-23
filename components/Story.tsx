@@ -65,7 +65,7 @@ export function Story({ t, demo }: { t: Dict['story']; demo: Dict['tools']['demo
       <div className="st-pin">
         <div className="st-track">
           <header className="st-head">
-            <SectionLabel n="01" text={t.label} />
+            <SectionLabel n="02" text={t.label} />
             <Lines text={t.title} className="display h-sec" />
             <p className="lead" data-reveal>{t.lead}</p>
           </header>

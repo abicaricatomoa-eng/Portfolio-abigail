@@ -6,10 +6,10 @@ import type { Dict, Locale } from '@/lib/i18n';
 import './chrome.css';
 
 export const SECTIONS = [
-  ['historia', 'story'],
   ['trabajo', 'work'],
-  ['herramientas', 'tools'],
+  ['historia', 'story'],
   ['proceso', 'process'],
+  ['herramientas', 'tools'],
   ['contacto', 'contact'],
 ] as const;
 
@@ -47,9 +47,20 @@ export function Chrome({ t, locale }: { t: Dict['nav']; locale: Locale }) {
   useEffect(() => {
     const h = hdr.current;
     if (!h) return;
-    let raf = 0;
+    let raf = 0, last = scrollY;
+    const links = [...h.querySelectorAll<HTMLAnchorElement>('.hdr-nav a')];
     const update = () => {
       raf = 0;
+      // out of the way while reading down, back as soon as the reader scrolls up
+      const sy = scrollY;
+      if (Math.abs(sy - last) > 6) { h.toggleAttribute('data-away', sy > last && sy > innerHeight * 0.6); last = sy; }
+      // the section being read is marked in the nav
+      let cur = '';
+      for (const [id] of SECTIONS) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= innerHeight * 0.4) cur = id;
+      }
+      links.forEach((a) => { if (a.hash === `#${cur}`) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
       const y = h.offsetHeight / 2;
       let theme = 'paper';
       for (const s of document.querySelectorAll<HTMLElement>('[data-hdr]')) {
@@ -94,7 +105,7 @@ export function Chrome({ t, locale }: { t: Dict['nav']; locale: Locale }) {
             ))}
           </ol>
         </nav>
-        <a className="hdr-lang" href={`${BASE_PATH}/${other}/`} hrefLang={other} onClick={switchLang} aria-label={`${t.lang}: ${t.langOther}`}>
+        <a className="hdr-lang" data-magnetic="0.4" href={`${BASE_PATH}/${other}/`} hrefLang={other} onClick={switchLang} aria-label={`${t.lang}: ${t.langOther}`}>
           {t.langOtherShort}
         </a>
         <button ref={btn} className="hdr-menu" type="button" aria-haspopup="dialog" aria-expanded={open} onClick={show}>

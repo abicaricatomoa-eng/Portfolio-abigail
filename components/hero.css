@@ -1,4 +1,4 @@
-.hero { padding: calc(var(--header-h) + 8px) var(--gutter) 28px; min-height: 100svh; display: flex; }
+.hero { padding: calc(var(--header-h) + 8px) var(--gutter) 28px; min-height: 100svh; display: flex; overflow-x: clip; }
 .hero-sheet {
   position: relative; flex: 1; display: flex; flex-direction: column; justify-content: flex-end;
   max-width: 1440px; margin: 30px auto; width: 100%; color: var(--on-paper);
@@ -32,13 +32,23 @@
 .hero-side { display: grid; gap: 28px; align-content: start; }
 .hero-intro { max-width: 46ch; color: var(--on-paper-muted); font-size: clamp(16px, 1.3vw, 19px); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-base { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-top: 44px; }
+.hero-scroll { flex: none; display: inline-flex; align-items: center; gap: 14px; min-height: 44px; font: 500 12px/1 var(--font-m); letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-paper); text-decoration: none; }
+.hero-scroll i { position: relative; width: 1px; height: 46px; background: var(--line-paper); overflow: hidden; }
+.hero-scroll i::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 45%; background: var(--m-deep); transform: translateY(-100%); }
+@media (prefers-reduced-motion: no-preference) {
+  /* three passes after the entrance, then it rests: nothing keeps moving */
+  .hero-scroll i::after { animation: hs-drop 2.2s var(--ease) 3s 3; }
+  @keyframes hs-drop { to { transform: translateY(240%); } }
+}
 .hero-slug {
-  display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 44px;
+  display: flex; flex-wrap: wrap; gap: 6px 22px;
   font: 500 12px/1.3 var(--font-m); letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-paper-muted);
 }
 .hero-slug span + span::before { content: '·'; margin-right: 22px; opacity: 0.6; }
 @media (max-width: 860px) {
   .hero-foot { grid-template-columns: 1fr; }
+  .hero-scroll { display: none; }
   .hero-top span:first-child { max-width: 50%; }
 }
 

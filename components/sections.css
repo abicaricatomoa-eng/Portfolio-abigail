@@ -1,14 +1,14 @@
 /* marquee */
-.mq { overflow: hidden; padding: 26px 0; border-block: 1px solid var(--line-ink); }
+.mq { overflow: hidden; padding: clamp(22px, 3vw, 40px) 0; border-block: 1px solid var(--line-ink); }
 .mq-track { display: flex; width: max-content; }
 .mq-row { display: flex; flex: none; }
-.mq-row li { display: flex; align-items: center; gap: 36px; padding-right: 36px; font: 400 clamp(32px, 4.4vw, 64px)/1 var(--font-d); white-space: nowrap; }
+.mq-row li { display: flex; align-items: center; gap: clamp(20px, 2.4vw, 40px); padding-right: clamp(20px, 2.4vw, 40px); font: 400 clamp(36px, 5.2vw, 84px)/1 var(--font-d); letter-spacing: -0.02em; white-space: nowrap; }
 .mq-row li:nth-child(even) { font-style: italic; color: var(--on-ink-muted); }
-.mq-row i { width: 14px; height: 14px; border-radius: 50%; background: var(--m); flex: none; }
-.mq-row li:nth-child(3n + 2) i { background: var(--c); }
-.mq-row li:nth-child(3n) i { background: var(--y); }
+.mq-pic { flex: none; display: block; height: 0.86em; aspect-ratio: 16 / 10; border-radius: 999px; overflow: hidden; transform: rotate(-4deg); box-shadow: 0 0 0 1px var(--line-ink); }
+.mq-row li:nth-child(even) .mq-pic { transform: rotate(4deg); }
+.mq-pic .cover img { transform: scale(1.02); }
 @media (prefers-reduced-motion: no-preference) {
-  .mq-track { animation: mq 42s linear infinite; animation-play-state: paused; }
+  .mq-track { animation: mq 70s linear infinite; animation-play-state: paused; }
   .mq[data-run] .mq-track { animation-play-state: running; }
   @keyframes mq { to { transform: translateX(-50%); } }
 }
@@ -57,16 +57,20 @@
 .ct-pending { font-size: 13px; letter-spacing: 0.08em; color: var(--on-ink-muted); }
 @media (max-width: 760px) { .ct-foot { grid-template-columns: 1fr; } }
 
-/* footer */
-.ft { padding: 48px var(--gutter) 40px; border-top: 1px solid var(--line-ink); }
-.ft-in { display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: end; }
-.ft-mono { font-size: 72px; line-height: 0.8; }
-.ft-mono em { font-style: italic; color: var(--m-light); }
+/* footer: colophon, then the signature across the whole sheet */
+.ft { padding: clamp(56px, 7vw, 96px) var(--gutter) 0; border-top: 1px solid var(--line-ink); overflow: hidden; }
+.ft-in { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; padding-bottom: clamp(32px, 4vw, 56px); border-bottom: 1px solid var(--line-ink); }
 .ft-meta { display: grid; gap: 6px; font: 400 13px/1.5 var(--font-m); color: var(--on-ink-muted); }
 .ft-end { display: grid; gap: 18px; justify-items: end; }
 .ft-end .colorbar { width: 220px; height: 10px; }
 .ft-top { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 500 12px/1 var(--font-m); letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; }
+.ft-sign {
+  margin: clamp(20px, 2.4vw, 36px) -0.02em 0; font-size: clamp(56px, 13.4vw, 228px); line-height: 0.74; letter-spacing: -0.045em;
+  white-space: nowrap; text-align: center; color: var(--on-ink);
+}
+.ft-sign em { font-style: italic; color: var(--m-light); }
 @media (max-width: 760px) {
   .ft-in { grid-template-columns: 1fr; }
   .ft-end { justify-items: start; }
+  .ft-sign { font-size: 13.2vw; }
 }

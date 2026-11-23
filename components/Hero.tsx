@@ -60,7 +60,11 @@ export function Hero({ t }: { t: Dict['hero'] }) {
       addEventListener('pointermove', move, { passive: true });
       cleanup = () => { removeEventListener('pointermove', move); io.disconnect(); };
     }
-    return () => { off(); tl?.kill(); cleanup(); };
+    const leave = gsap.to(q('.hero-sheet'), {
+      yPercent: 14, opacity: 0.25, ease: 'none',
+      scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: true },
+    });
+    return () => { off(); tl?.kill(); cleanup(); leave.scrollTrigger?.kill(); leave.kill(); };
   }, []);
 
   return (
@@ -88,15 +92,18 @@ export function Hero({ t }: { t: Dict['hero'] }) {
           <div className="hero-side">
             <p className="hero-intro" data-hero>{t.intro}</p>
             <div className="hero-cta" data-hero>
-              <a className="btn btn-solid" href="#trabajo"><span>{t.ctaWork}</span><span className="arr" aria-hidden="true">→</span></a>
-              <a className="btn btn-line" href="#historia"><span>{t.ctaStory}</span></a>
+              <a className="btn btn-solid" href="#trabajo" data-magnetic><span>{t.ctaWork}</span><span className="arr" aria-hidden="true">→</span></a>
+              <a className="btn btn-line" href="#historia" data-magnetic><span>{t.ctaStory}</span></a>
             </div>
           </div>
         </div>
-        <p className="hero-slug" data-hero aria-hidden="true">
-          <span>Abigail Caricato — Portfolio 2026</span>
-          {t.specs.map((s) => <span key={s}>{s}</span>)}
-        </p>
+        <div className="hero-base" data-hero>
+          <p className="hero-slug" aria-hidden="true">
+            <span>Abigail Caricato — Portfolio 2026</span>
+            {t.specs.map((s) => <span key={s}>{s}</span>)}
+          </p>
+          <a className="hero-scroll" href="#trabajo" tabIndex={-1} aria-hidden="true"><span>{t.scroll}</span><i /></a>
+        </div>
       </div>
     </section>
   );

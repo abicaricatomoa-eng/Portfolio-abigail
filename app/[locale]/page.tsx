@@ -4,6 +4,7 @@ import { Chrome } from '@/components/Chrome';
 import { Loader } from '@/components/Loader';
 import { Cursor } from '@/components/Cursor';
 import { Reveals } from '@/components/Reveals';
+import { Magnetic } from '@/components/Magnetic';
 import { Hero } from '@/components/Hero';
 import { Marquee } from '@/components/Marquee';
 import { Story } from '@/components/Story';
@@ -27,15 +28,16 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <main id="contenido">
         <Hero t={t.hero} />
         <Marquee items={t.marquee} />
-        <Story t={t.story} demo={t.tools.demo} />
         <Work t={t.work} />
-        <Tools t={t.tools} />
+        <Story t={t.story} demo={t.tools.demo} />
         <Process t={t.process} />
+        <Tools t={t.tools} />
         <Manifesto t={t.manifesto} />
         <Contact t={t.contact} />
       </main>
-      <Footer t={t.footer} />
+      <Footer t={t.footer} name={[t.hero.first, t.hero.last]} />
       <Cursor view={t.work.open.split(' ')[0]} />
+      <Magnetic />
       <Reveals />
     </>
   );

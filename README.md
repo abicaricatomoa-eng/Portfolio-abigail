@@ -26,6 +26,8 @@ npm run build      # → out/
 
 - Textos: `messages/es.json` y `messages/en.json` (mismas claves; lo verifica `npm test`).
 - Contacto: `content/site.ts`. Vacío = no se muestra. **Completar con los datos reales de Abigail.**
+- Galería de trabajo: la composición de cada tarjeta (`card`), su tamaño (`size`) y su desplazamiento (`shift`) están en
+  `content/work.ts`; se dibujan en `components/Cover.tsx`.
 - Proyectos: textos y bloques del brandboard en `messages/*.json` (`work.projects`); colores, portada y herramientas en
   `content/work.ts`; imágenes en `public/trabajo/`; ficha en `components/Work.tsx` y brandboard en `components/Brandboard.tsx`.
   Los celulares de Walking Time y las laptops de Juicy están recortados (`.webp` con fondo transparente) para apoyarlos

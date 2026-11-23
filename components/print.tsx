@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 // Print marks shared by every section: registration target, crop marks, CMYK colour bar.
 
 export function RegMark({ className, size = 18 }: { className?: string; size?: number }) {
@@ -41,13 +43,14 @@ export function SectionLabel({ n, text }: { n: string; text: string }) {
   );
 }
 
-// Big titles that rise line by line (split on \n)
-export function Lines({ text, as: Tag = 'h2', className }: { text: string; as?: 'h1' | 'h2' | 'p'; className?: string }) {
+// Big titles that rise line by line (split on \n); `after` rides at the end of the last line (a count, a mark)
+export function Lines({ text, as: Tag = 'h2', className, after }: { text: string; as?: 'h1' | 'h2' | 'p'; className?: string; after?: ReactNode }) {
+  const lines = text.split('\n');
   return (
     <Tag className={`lines ${className ?? ''}`} data-lines>
-      {text.split('\n').map((l, i) => (
+      {lines.map((l, i) => (
         <span className="ln" key={i} style={{ ['--i' as string]: i }}>
-          <span>{l}</span>
+          <span>{l}{i === lines.length - 1 && after}</span>
         </span>
       ))}
     </Tag>
