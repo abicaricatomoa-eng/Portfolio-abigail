@@ -2,7 +2,7 @@ import '../globals.css';
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
-import { fontDisplay, fontMono, fontSans } from '../fonts';
+import { fontDisplay, fontMono, fontPoppins, fontSans } from '../fonts';
 import { getDict, isLocale, localeTags, locales } from '@/lib/i18n';
 import { NOINDEX, SITE_URL, absoluteUrl, asset } from '@/lib/site';
 
@@ -40,7 +40,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   return (
-    <html lang={localeTags[locale]} className={`${fontDisplay.variable} ${fontSans.variable} ${fontMono.variable}`}>
+    <html lang={localeTags[locale]} className={`${fontDisplay.variable} ${fontSans.variable} ${fontMono.variable} ${fontPoppins.variable}`}>
       <head>
         {/* the loader and the hero's entrance only run with JS; without it, everything is visible */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
