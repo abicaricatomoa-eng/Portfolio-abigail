@@ -77,90 +77,394 @@
   "work": {
     "label": "Work",
     "title": "Selected work.",
-    "lead": "Six concept projects: fictional brands and imagined briefs, solved end to end.",
-    "badge": "Concept project",
-    "fictional": "Fictional brand",
+    "lead": "Five projects: identity, packaging, web design and app design.",
     "open": "View project",
     "close": "Close",
     "next": "Next",
     "prev": "Previous",
     "fields": {
-      "brief": "The brief",
-      "idea": "The idea",
-      "system": "The system",
+      "brief": "Project",
+      "idea": "Idea",
       "deliverables": "Deliverables",
       "tools": "Tools",
-      "palette": "Palette",
-      "type": "Typography"
+      "note": "Note"
     },
     "projects": [
       {
-        "id": "nacar",
-        "name": "Nácar",
-        "client": "Studio jewellery",
+        "id": "velmar",
+        "name": "VelMar",
+        "client": "Product label",
         "discipline": "Brand identity",
-        "brief": "A jeweller working in silver and mother-of-pearl needed an identity as delicate as the pieces, and firm enough to live on a five-centimetre box.",
-        "idea": "The brand is born from the sheen of nacre: an N of hairlines and heavy strokes, as if engraved, on a disc that changes colour with the light.",
-        "system": "Monogram, wordmark in a high-contrast serif, a pearl-and-ink palette, and a pattern of fine waves, like the grain of nacre.",
-        "deliverables": ["Monogram and wordmark", "Brand guidelines", "Cards and tags", "Box and bag"],
-        "palette": [["Pearl", "#EDE6DD"], ["Ink", "#151317"], ["Nacre", "#C9B8D6"], ["Silver", "#A7A9AC"]]
+        "tag": "",
+        "brief": "Logo and label for VelMar’s Coconut Vanilla home spray, a home fragrance brand.",
+        "idea": "An M and a V interlocked: the brand name turned into a symbol.",
+        "deliverables": ["Symbol", "Logotype", "Product label"],
+        "note": "",
+        "palette": [
+          ["Olive", "#4A503C"],
+          ["Label taupe", "#A7A19E"],
+          ["White", "#FDFDFD"],
+          ["Bottle black", "#0F0E0D"]
+        ],
+        "blocks": [
+          {
+            "k": "img",
+            "src": "velmar_spray.jpg",
+            "span": 6,
+            "ar": "4/5",
+            "fit": "cover",
+            "pos": "50% 55%",
+            "bg": "#111",
+            "cap": "Home spray · Coconut Vanilla",
+            "alt": "VelMar Coconut Vanilla home spray"
+          },
+          {
+            "k": "logo",
+            "src": "velmar_logo.png",
+            "span": 6,
+            "bg": "#4A503C",
+            "fg": "#FDFDFD",
+            "ar": "4/5",
+            "w": "54%",
+            "label": "Symbol",
+            "alt": "VelMar symbol"
+          },
+          { "k": "pal", "span": 12, "layout": "h" }
+        ]
       },
       {
-        "id": "umbral",
-        "name": "Umbral",
-        "client": "Architecture magazine",
-        "discipline": "Editorial design",
-        "brief": "A quarterly architecture magazine wanted to return to print with layouts that breathe like the buildings it publishes.",
-        "idea": "Every issue is built on a twelve-column grid that stays visible: fine lines the cover shows without shame.",
-        "system": "Typographic covers, a modular grid, three levels of hierarchy and full-bleed photography.",
-        "deliverables": ["Cover and layout", "Grid and styles", "InDesign templates", "Prepress"],
-        "palette": [["Concrete", "#D9D6CF"], ["Graphite", "#2B2B2E"], ["Signal", "#E4572E"]]
+        "id": "cremabis",
+        "name": "Crema Bis",
+        "client": "Natural cosmetics",
+        "discipline": "Identity and packaging",
+        "tag": "",
+        "brief": "Brand and packaging for a natural cannabis cream: logo, jar label, lid, box and die line.",
+        "idea": "A cream drop with a leaf as the product’s symbol, in natural greens on cream, with line icons for ingredients and benefits.",
+        "deliverables": ["Logo", "Label", "Jar with lid", "Box and die line"],
+        "note": "",
+        "palette": [
+          ["Cream", "#FEF8EC"],
+          ["Ivory", "#F2E9D7"],
+          ["Leaf green", "#657F36"],
+          ["Sage green", "#7A9160"],
+          ["Forest green", "#2B4D1B"]
+        ],
+        "blocks": [
+          {
+            "k": "img",
+            "src": "crema_jar_box.jpg",
+            "span": 12,
+            "ar": "1300/867",
+            "fit": "cover",
+            "bg": "#F7EEDB",
+            "blend": "multiply",
+            "cap": "Jar and box",
+            "alt": "Crema Bis jar and box"
+          },
+          {
+            "k": "img",
+            "src": "crema_logo.jpg",
+            "span": 4,
+            "ar": "4/5",
+            "fit": "cover",
+            "pos": "50% 62%",
+            "bg": "#F7EEDB",
+            "blend": "multiply",
+            "cap": "Main logo",
+            "alt": "Crema Bis logo"
+          },
+          {
+            "k": "img",
+            "src": "crema_label.jpg",
+            "span": 8,
+            "ar": "auto",
+            "fit": "contain",
+            "bg": "#F7EEDB",
+            "pad": "clamp(14px, 2.4vw, 32px)",
+            "blend": "multiply",
+            "cap": "Label · ingredients and benefits",
+            "alt": "Crema Bis label"
+          },
+          {
+            "k": "img",
+            "src": "crema_jar_open.jpg",
+            "span": 6,
+            "ar": "3/2",
+            "fit": "cover",
+            "bg": "#F7EEDB",
+            "blend": "multiply",
+            "cap": "Jar and lid",
+            "alt": "Open Crema Bis jar with its lid"
+          },
+          {
+            "k": "img",
+            "src": "crema_dieline.jpg",
+            "span": 6,
+            "ar": "3/2",
+            "fit": "cover",
+            "bg": "#F7EEDB",
+            "blend": "multiply",
+            "cap": "Box die line",
+            "alt": "Crema Bis box die line"
+          },
+          { "k": "pal", "span": 12, "layout": "h" }
+        ]
       },
       {
-        "id": "olalenta",
-        "name": "Ola Lenta",
-        "client": "Slow cinema festival",
-        "discipline": "Posters and motion",
-        "brief": "A festival of contemplative cinema needed a poster series that invited people to slow down.",
-        "idea": "Three posters, three speeds: the same wave stretches from one poster to the next until it is almost still.",
-        "system": "Poster series, social pieces and short animations, all built from the same wave.",
-        "deliverables": ["Series of three posters", "Social pieces", "6-second animations"],
-        "palette": [["Night", "#101626"], ["Mist", "#8FA3BF"], ["Beacon", "#F2C14E"]]
+        "id": "criptadulce",
+        "name": "Cripta Dulce",
+        "client": "Gothic bakery",
+        "discipline": "Web design",
+        "tag": "",
+        "brief": "Website for a gothic bakery with a product carousel: Meow Cookies, Donut eyes, Cupcake blood and Boo meringues.",
+        "idea": "Each flavour tints the whole page: colour, photos and background change with it, with sauce splashes as dividers.",
+        "deliverables": [
+          "Logo (coffins and cupcake)",
+          "Interface design",
+          "Interactive prototype"
+        ],
+        "note": "",
+        "palette": [
+          ["Burgundy", "#710819"],
+          ["Chocolate", "#3C1A10"],
+          ["Peach", "#FEE7D5"],
+          ["Mist", "#ABABAB"],
+          ["Rose", "#CA7380"]
+        ],
+        "blocks": [
+          {
+            "k": "img",
+            "src": "cripta1.jpg",
+            "span": 12,
+            "ar": "1059/688",
+            "fit": "cover",
+            "bg": "#3C1A10",
+            "frame": "browser",
+            "cap": "Meow Cookies",
+            "alt": "Cripta Dulce: Meow Cookies"
+          },
+          {
+            "k": "img",
+            "src": "cripta2.jpg",
+            "span": 4,
+            "ar": "1059/688",
+            "fit": "cover",
+            "bg": "#FEE7D5",
+            "frame": "browser",
+            "cap": "Donut eyes",
+            "alt": "Cripta Dulce: Donut eyes"
+          },
+          {
+            "k": "img",
+            "src": "cripta3.jpg",
+            "span": 4,
+            "ar": "1059/688",
+            "fit": "cover",
+            "bg": "#710819",
+            "frame": "browser",
+            "cap": "Cupcake blood",
+            "alt": "Cripta Dulce: Cupcake blood"
+          },
+          {
+            "k": "img",
+            "src": "cripta4.jpg",
+            "span": 4,
+            "ar": "1059/688",
+            "fit": "cover",
+            "bg": "#ABABAB",
+            "frame": "browser",
+            "cap": "Boo meringues",
+            "alt": "Cripta Dulce: Boo meringues"
+          },
+          {
+            "k": "logo",
+            "src": "cripta_logo.png",
+            "span": 4,
+            "bg": "#710819",
+            "fg": "#FEE7D5",
+            "ar": "4/5",
+            "w": "86%",
+            "label": "Logo",
+            "alt": "Cripta Dulce logo"
+          },
+          {
+            "k": "type",
+            "span": 4,
+            "bg": "#3C1A10",
+            "fg": "#FEE7D5",
+            "sample": "cripta_title.png",
+            "samplebg": "#710819",
+            "sampleLabel": "Cloister Black · Headings",
+            "sampleAlt": "Heading typeface sample",
+            "role": "Navigation and body text",
+            "face": "Poppins"
+          },
+          { "k": "pal", "span": 4, "layout": "v" }
+        ]
       },
       {
-        "id": "almacigo",
-        "name": "Almácigo",
-        "client": "Garden seeds",
-        "discipline": "Packaging and illustration",
-        "brief": "A seed brand for urban gardens wanted packets that could be understood at a glance on the shelf.",
-        "idea": "Each variety has its own illustration and colour; when to sow is read on a graphic calendar, with no small print.",
-        "system": "Packet system, vector illustrations per variety, a sowing calendar and the die line.",
-        "deliverables": ["Six packets", "Illustrations", "Die line and final art", "Display stand"],
-        "palette": [["Soil", "#6B4F3A"], ["Sprout", "#7FA650"], ["Tomato", "#D9472B"], ["Paper", "#F1EAD8"]]
+        "id": "walkingtime",
+        "name": "Walking Time",
+        "client": "UI/UX",
+        "discipline": "App design",
+        "tag": "Personal concept",
+        "brief": "Gamified walking app with a pixel-art look, where you choose which character to walk with.",
+        "idea": "Turn step counting into an adventure with characters.",
+        "deliverables": [
+          "Home, sign-up and login",
+          "Daily dashboard",
+          "Character selection",
+          "Route map"
+        ],
+        "note": "Non-commercial project; the characters belong to their creators.",
+        "palette": [
+          ["Sky", "#ABE6E9"],
+          ["Light blue", "#72D7FF"],
+          ["Jake yellow", "#EEC30E"],
+          ["Red", "#A4292E"]
+        ],
+        "blocks": [
+          {
+            "k": "phones",
+            "span": 12,
+            "bg": "linear-gradient(180deg, #ABE6E9, #72D7FF)",
+            "items": [
+              { "src": "walk1.webp", "cap": "Home" },
+              { "src": "walk2.webp", "cap": "Sign up" },
+              { "src": "walk3.webp", "cap": "Login" },
+              { "src": "walk4.webp", "cap": "Daily dashboard" },
+              { "src": "walk5.webp", "cap": "Pick a companion" },
+              { "src": "walk6.webp", "cap": "Character" },
+              { "src": "walk7.webp", "cap": "Route map" }
+            ]
+          },
+          {
+            "k": "logo",
+            "src": "walk_logo.png",
+            "span": 4,
+            "bg": "#ABE6E9",
+            "fg": "#1B2B3A",
+            "ar": "4/5",
+            "w": "78%",
+            "label": "App title",
+            "alt": "Walking Time title"
+          },
+          {
+            "k": "text",
+            "span": 4,
+            "title": "Flow",
+            "items": [
+              "Sign-up with Google, Apple or Facebook",
+              "Dashboard with steps, route and water",
+              "Choose who to walk with",
+              "Live route map"
+            ]
+          },
+          { "k": "pal", "span": 4, "layout": "v" }
+        ]
       },
       {
-        "id": "vertigo",
-        "name": "Vértigo",
-        "client": "Thriller series",
-        "discipline": "Title sequence",
-        "brief": "A thriller series needed a thirty-second title sequence.",
-        "idea": "Lines spin towards the centre like a spiral staircase; the title appears when the vertigo stops.",
-        "system": "Storyboard, kinetic type, rhythm cut to the sound and versions for social.",
-        "deliverables": ["30-second sequence", "Storyboard", "6 and 15-second cuts"],
-        "palette": [["Void", "#0B0B0D"], ["Bone", "#E8E2D6"], ["Alarm", "#C1121F"]]
-      },
-      {
-        "id": "lumbre",
-        "name": "Lumbre",
-        "client": "Scented candles",
-        "discipline": "Art direction and retouching",
-        "brief": "A candle brand wanted a warm campaign that didn't fall into the obvious.",
-        "idea": "The whole campaign is lit by the flame: one light source, deep backgrounds and retouching that keeps the texture of the wax.",
-        "system": "Art direction, retouching and colour, posters and social pieces.",
-        "deliverables": ["Key visual", "Retouching and colour", "Posters", "Social pieces"],
-        "palette": [["Smoke", "#1A1412"], ["Wax", "#EADBC8"], ["Flame", "#F29E38"]]
+        "id": "juicy",
+        "name": "Juicy",
+        "client": "Drinks",
+        "discipline": "Web design",
+        "tag": "Concept",
+        "brief": "Website for a four-flavour drinks brand, with a size selector (500, 250 and 100 ml) and a cart.",
+        "idea": "One colour and fruit world per flavour: on hover each column expands to show its bottle; on selection the whole background changes.",
+        "deliverables": ["Flavour menu", "Product view", "Size selector", "Prototype"],
+        "note": "",
+        "palette": [
+          ["Strawberry", "#DD7A96"],
+          ["Berry", "#C789B8"],
+          ["Green", "#9DDE42"],
+          ["Coffee", "#D1A76C"],
+          ["Soft lilac", "#F3C2FE"]
+        ],
+        "blocks": [
+          {
+            "k": "img",
+            "src": "juicy6.webp",
+            "span": 12,
+            "ar": "1015/617",
+            "fit": "contain",
+            "bg": "#F6D2DC",
+            "pad": "clamp(20px, 5vw, 72px)",
+            "cap": "Strawberry",
+            "alt": "Juicy: Strawberry flavour"
+          },
+          {
+            "k": "img",
+            "src": "juicy7.webp",
+            "span": 4,
+            "ar": "1015/617",
+            "fit": "contain",
+            "bg": "#EED6EA",
+            "pad": "clamp(14px, 2.4vw, 32px)",
+            "cap": "Berry Smoothie",
+            "alt": "Juicy: Berry Smoothie"
+          },
+          {
+            "k": "img",
+            "src": "juicy8.webp",
+            "span": 4,
+            "ar": "1015/617",
+            "fit": "contain",
+            "bg": "#E0F2C4",
+            "pad": "clamp(14px, 2.4vw, 32px)",
+            "cap": "Green Smoothie",
+            "alt": "Juicy: Green Smoothie"
+          },
+          {
+            "k": "img",
+            "src": "juicy9.webp",
+            "span": 4,
+            "ar": "1015/617",
+            "fit": "contain",
+            "bg": "#F1E2CD",
+            "pad": "clamp(14px, 2.4vw, 32px)",
+            "cap": "Coffee Milk",
+            "alt": "Juicy: Coffee Milk"
+          },
+          {
+            "k": "img",
+            "src": "juicy1.webp",
+            "span": 6,
+            "ar": "1015/617",
+            "fit": "contain",
+            "bg": "#FBEAFF",
+            "pad": "clamp(14px, 2.4vw, 32px)",
+            "cap": "Flavour menu",
+            "alt": "Juicy: flavour menu"
+          },
+          {
+            "k": "img",
+            "src": "juicy2.webp",
+            "span": 6,
+            "ar": "1015/617",
+            "fit": "contain",
+            "bg": "#FBEAFF",
+            "pad": "clamp(14px, 2.4vw, 32px)",
+            "cap": "Hover: the column expands",
+            "alt": "Juicy: column expanded on hover"
+          },
+          { "k": "pal", "span": 8, "layout": "h" },
+          {
+            "k": "type",
+            "span": 4,
+            "bg": "#2A1830",
+            "fg": "#F3C2FE",
+            "role": "Entire interface",
+            "face": "Poppins"
+          }
+        ]
       }
-    ]
+    ],
+    "palette": "Colour palette",
+    "type": "Typography",
+    "screens": "Screens",
+    "copy": "Copy",
+    "copied": "Copied",
+    "nextProject": "Next project"
   },
   "tools": {
     "label": "Tools",
@@ -214,7 +518,7 @@
   "footer": {
     "rights": "© 2026 Abigail Caricato",
     "colophon": "Set in Bodoni Moda, Hanken Grotesk and DM Mono.",
-    "note": "The projects are concepts: fictional brands and briefs.",
+    "note": "Projects labelled “Concept” are personal exercises.",
     "top": "Back to top"
   }
 }

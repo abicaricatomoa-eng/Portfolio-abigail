@@ -17,9 +17,14 @@ describe('messages', () => {
     expect(en.work.projects.map((p) => p.id)).toEqual(es.work.projects.map((p) => p.id));
     expect(en.work.projects.map((p) => p.palette.map((c) => c[1]))).toEqual(es.work.projects.map((p) => p.palette.map((c) => c[1])));
   });
-  it('every project is labelled as a concept with a fictional brand', () => {
-    expect(es.work.badge).toMatch(/conceptual/i);
-    expect(es.work.fictional).toMatch(/ficticia/i);
-    expect(en.work.badge).toMatch(/concept/i);
+  it('projects use the same images and layout in both languages', () => {
+    const imgs = (d: typeof es) => d.work.projects.map((p) => JSON.stringify((p.blocks as { k: string; src?: string; span: number }[]).map((b) => [b.k, b.src, b.span])));
+    expect(imgs(en)).toEqual(imgs(es));
+  });
+  it('concept projects are labelled as such in both languages', () => {
+    const tagged = (d: typeof es) => d.work.projects.map((p) => Boolean(p.tag));
+    expect(tagged(en)).toEqual(tagged(es));
+    expect(es.work.projects.find((p) => p.id === 'walkingtime')?.tag).toMatch(/concepto/i);
+    expect(en.work.projects.find((p) => p.id === 'walkingtime')?.tag).toMatch(/concept/i);
   });
 });
