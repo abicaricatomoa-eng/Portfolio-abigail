@@ -9,7 +9,8 @@ magenta de proceso como única luz.
 ## Stack
 
 Next.js (App Router, `output: 'export'`) + TypeScript + GSAP/ScrollTrigger. Tipografías autoalojadas con `next/font`:
-Bodoni Moda (títulos), Hanken Grotesk (texto) y DM Mono (datos y rótulos). Sin otras dependencias.
+Bodoni Moda (títulos), Hanken Grotesk (texto) y DM Mono (datos y rótulos); Poppins solo en la ficha tipográfica de
+Cripta Dulce y Juicy. Sin otras dependencias.
 
 ## Comandos
 
@@ -25,7 +26,10 @@ npm run build      # → out/
 
 - Textos: `messages/es.json` y `messages/en.json` (mismas claves; lo verifica `npm test`).
 - Contacto: `content/site.ts`. Vacío = no se muestra. **Completar con los datos reales de Abigail.**
-- Proyectos: textos y bloques del brandboard en `messages/*.json` (`work.projects`); colores, portada y herramientas en `content/work.ts`; imágenes en `public/trabajo/`; render en `components/Brandboard.tsx`.
+- Proyectos: textos y bloques del brandboard en `messages/*.json` (`work.projects`); colores, portada y herramientas en
+  `content/work.ts`; imágenes en `public/trabajo/`; ficha en `components/Work.tsx` y brandboard en `components/Brandboard.tsx`.
+  Los celulares de Walking Time y las laptops de Juicy están recortados (`.webp` con fondo transparente) para apoyarlos
+  sobre el color de cada proyecto; las fotos de Crema Bis usan `blend: multiply` para fundir el fondo blanco.
 
 ## Antes de compartirlo
 

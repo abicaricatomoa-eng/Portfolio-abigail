@@ -98,58 +98,38 @@
         "tag": "",
         "brief": "Logo y etiqueta del home spray Coco Vainilla de VelMar, una marca de aromas para el hogar.",
         "idea": "Una M y una V encastradas: el nombre de la marca convertido en símbolo.",
-        "deliverables": [
-          "Isotipo",
-          "Logotipo",
-          "Etiqueta de producto"
-        ],
+        "deliverables": ["Isotipo", "Logotipo", "Etiqueta de producto"],
         "note": "",
         "palette": [
-          [
-            "Oliva",
-            "#4A503C"
-          ],
-          [
-            "Taupe etiqueta",
-            "#A7A19E"
-          ],
-          [
-            "Blanco",
-            "#FDFDFD"
-          ],
-          [
-            "Negro botella",
-            "#0F0E0D"
-          ]
+          ["Oliva", "#4A503C"],
+          ["Taupe etiqueta", "#A7A19E"],
+          ["Blanco", "#FDFDFD"],
+          ["Negro botella", "#0F0E0D"]
         ],
         "blocks": [
           {
-            "k": "logo",
-            "src": "velmar_logo.png",
-            "span": 4,
-            "bg": "#4A503C",
-            "fg": "#FDFDFD",
-            "ar": "1/1",
-            "w": "62%",
-            "label": "Isotipo",
-            "alt": "Isotipo de VelMar"
-          },
-          {
             "k": "img",
             "src": "velmar_spray.jpg",
-            "span": 4,
+            "span": 6,
             "ar": "4/5",
             "fit": "cover",
-            "pos": "50% 78%",
+            "pos": "50% 55%",
             "bg": "#111",
             "cap": "Home spray · Coco Vainilla",
             "alt": "Home spray Coco Vainilla de VelMar"
           },
           {
-            "k": "pal",
-            "span": 4,
-            "layout": "v"
-          }
+            "k": "logo",
+            "src": "velmar_logo.png",
+            "span": 6,
+            "bg": "#4A503C",
+            "fg": "#FDFDFD",
+            "ar": "4/5",
+            "w": "54%",
+            "label": "Isotipo",
+            "alt": "Isotipo de VelMar"
+          },
+          { "k": "pal", "span": 12, "layout": "h" }
         ]
       },
       {
@@ -160,36 +140,27 @@
         "tag": "",
         "brief": "Marca y packaging de una crema natural de cannabis: logo, etiqueta del pote, tapa, caja y troquel.",
         "idea": "La gota de crema con la hoja como símbolo del producto, en verdes naturales sobre crema, con íconos de línea para ingredientes y beneficios.",
-        "deliverables": [
-          "Logo",
-          "Etiqueta",
-          "Pote con tapa",
-          "Caja y troquel"
-        ],
+        "deliverables": ["Logo", "Etiqueta", "Pote con tapa", "Caja y troquel"],
         "note": "",
         "palette": [
-          [
-            "Crema",
-            "#FEF8EC"
-          ],
-          [
-            "Marfil",
-            "#F2E9D7"
-          ],
-          [
-            "Verde hoja",
-            "#657F36"
-          ],
-          [
-            "Verde salvia",
-            "#7A9160"
-          ],
-          [
-            "Verde bosque",
-            "#2B4D1B"
-          ]
+          ["Crema", "#FEF8EC"],
+          ["Marfil", "#F2E9D7"],
+          ["Verde hoja", "#657F36"],
+          ["Verde salvia", "#7A9160"],
+          ["Verde bosque", "#2B4D1B"]
         ],
         "blocks": [
+          {
+            "k": "img",
+            "src": "crema_jar_box.jpg",
+            "span": 12,
+            "ar": "1300/867",
+            "fit": "cover",
+            "bg": "#F7EEDB",
+            "blend": "multiply",
+            "cap": "Pote y caja",
+            "alt": "Pote y caja de Crema Bis"
+          },
           {
             "k": "img",
             "src": "crema_logo.jpg",
@@ -197,7 +168,8 @@
             "ar": "4/5",
             "fit": "cover",
             "pos": "50% 62%",
-            "bg": "#FEF8EC",
+            "bg": "#F7EEDB",
+            "blend": "multiply",
             "cap": "Logo principal",
             "alt": "Logo de Crema Bis"
           },
@@ -207,8 +179,9 @@
             "span": 8,
             "ar": "auto",
             "fit": "contain",
-            "bg": "#FBF4E4",
-            "pad": "28px",
+            "bg": "#F7EEDB",
+            "pad": "clamp(14px, 2.4vw, 32px)",
+            "blend": "multiply",
             "cap": "Etiqueta · ingredientes y beneficios",
             "alt": "Etiqueta de Crema Bis"
           },
@@ -218,35 +191,23 @@
             "span": 6,
             "ar": "3/2",
             "fit": "cover",
-            "bg": "#fff",
+            "bg": "#F7EEDB",
+            "blend": "multiply",
             "cap": "Pote y tapa",
             "alt": "Pote de Crema Bis abierto con su tapa"
           },
           {
             "k": "img",
-            "src": "crema_jar_box.jpg",
+            "src": "crema_dieline.jpg",
             "span": 6,
             "ar": "3/2",
             "fit": "cover",
-            "bg": "#fff",
-            "cap": "Pote y caja",
-            "alt": "Pote y caja de Crema Bis"
-          },
-          {
-            "k": "img",
-            "src": "crema_dieline.jpg",
-            "span": 8,
-            "ar": "3/2",
-            "fit": "cover",
-            "bg": "#fff",
+            "bg": "#F7EEDB",
+            "blend": "multiply",
             "cap": "Troquel de la caja",
             "alt": "Troquel de la caja de Crema Bis"
           },
-          {
-            "k": "pal",
-            "span": 4,
-            "layout": "v"
-          }
+          { "k": "pal", "span": 12, "layout": "h" }
         ]
       },
       {
@@ -264,26 +225,11 @@
         ],
         "note": "",
         "palette": [
-          [
-            "Borgoña",
-            "#710819"
-          ],
-          [
-            "Chocolate",
-            "#3C1A10"
-          ],
-          [
-            "Durazno",
-            "#FEE7D5"
-          ],
-          [
-            "Niebla",
-            "#ABABAB"
-          ],
-          [
-            "Rosa",
-            "#CA7380"
-          ]
+          ["Borgoña", "#710819"],
+          ["Chocolate", "#3C1A10"],
+          ["Durazno", "#FEE7D5"],
+          ["Niebla", "#ABABAB"],
+          ["Rosa", "#CA7380"]
         ],
         "blocks": [
           {
@@ -293,6 +239,7 @@
             "ar": "1059/688",
             "fit": "cover",
             "bg": "#3C1A10",
+            "frame": "browser",
             "cap": "Meow Cookies",
             "alt": "Cripta Dulce: Meow Cookies"
           },
@@ -303,6 +250,7 @@
             "ar": "1059/688",
             "fit": "cover",
             "bg": "#FEE7D5",
+            "frame": "browser",
             "cap": "Donut eyes",
             "alt": "Cripta Dulce: Donut eyes"
           },
@@ -313,6 +261,7 @@
             "ar": "1059/688",
             "fit": "cover",
             "bg": "#710819",
+            "frame": "browser",
             "cap": "Cupcake blood",
             "alt": "Cripta Dulce: Cupcake blood"
           },
@@ -323,6 +272,7 @@
             "ar": "1059/688",
             "fit": "cover",
             "bg": "#ABABAB",
+            "frame": "browser",
             "cap": "Boo meringues",
             "alt": "Cripta Dulce: Boo meringues"
           },
@@ -332,7 +282,7 @@
             "span": 4,
             "bg": "#710819",
             "fg": "#FEE7D5",
-            "ar": "4/3",
+            "ar": "4/5",
             "w": "86%",
             "label": "Logo",
             "alt": "Logo de Cripta Dulce"
@@ -340,8 +290,8 @@
           {
             "k": "type",
             "span": 4,
-            "bg": "#FEE7D5",
-            "fg": "#3C1A10",
+            "bg": "#3C1A10",
+            "fg": "#FEE7D5",
             "sample": "cripta_title.png",
             "samplebg": "#710819",
             "sampleLabel": "Cloister Black · Títulos",
@@ -349,11 +299,7 @@
             "role": "Navegación y textos",
             "face": "Poppins"
           },
-          {
-            "k": "pal",
-            "span": 4,
-            "layout": "v"
-          }
+          { "k": "pal", "span": 4, "layout": "v" }
         ]
       },
       {
@@ -372,63 +318,25 @@
         ],
         "note": "Proyecto sin fines comerciales; los personajes pertenecen a sus creadores.",
         "palette": [
-          [
-            "Cielo",
-            "#ABE6E9"
-          ],
-          [
-            "Celeste",
-            "#72D7FF"
-          ],
-          [
-            "Amarillo Jake",
-            "#EEC30E"
-          ],
-          [
-            "Rojo",
-            "#A4292E"
-          ]
+          ["Cielo", "#ABE6E9"],
+          ["Celeste", "#72D7FF"],
+          ["Amarillo Jake", "#EEC30E"],
+          ["Rojo", "#A4292E"]
         ],
         "blocks": [
           {
             "k": "phones",
             "span": 12,
-            "bg": "linear-gradient(180deg,#ABE6E9,#72D7FF)",
+            "bg": "linear-gradient(180deg, #ABE6E9, #72D7FF)",
             "items": [
-              {
-                "src": "walk1.jpg",
-                "cap": "Inicio"
-              },
-              {
-                "src": "walk2.jpg",
-                "cap": "Registro"
-              },
-              {
-                "src": "walk3.jpg",
-                "cap": "Login"
-              },
-              {
-                "src": "walk4.jpg",
-                "cap": "Panel diario"
-              },
-              {
-                "src": "walk5.jpg",
-                "cap": "Elegí compañero"
-              },
-              {
-                "src": "walk6.jpg",
-                "cap": "Personaje"
-              },
-              {
-                "src": "walk7.jpg",
-                "cap": "Mapa del recorrido"
-              }
+              { "src": "walk1.webp", "cap": "Inicio" },
+              { "src": "walk2.webp", "cap": "Registro" },
+              { "src": "walk3.webp", "cap": "Login" },
+              { "src": "walk4.webp", "cap": "Panel diario" },
+              { "src": "walk5.webp", "cap": "Elegí compañero" },
+              { "src": "walk6.webp", "cap": "Personaje" },
+              { "src": "walk7.webp", "cap": "Mapa del recorrido" }
             ]
-          },
-          {
-            "k": "pal",
-            "span": 4,
-            "layout": "v"
           },
           {
             "k": "logo",
@@ -436,8 +344,8 @@
             "span": 4,
             "bg": "#ABE6E9",
             "fg": "#1B2B3A",
-            "ar": "4/3",
-            "w": "74%",
+            "ar": "4/5",
+            "w": "78%",
             "label": "Título de la app",
             "alt": "Título de Walking Time"
           },
@@ -451,7 +359,8 @@
               "Elegís con quién caminar",
               "Mapa del recorrido en tiempo real"
             ]
-          }
+          },
+          { "k": "pal", "span": 4, "layout": "v" }
         ]
       },
       {
@@ -470,93 +379,80 @@
         ],
         "note": "",
         "palette": [
-          [
-            "Frutilla",
-            "#DD7A96"
-          ],
-          [
-            "Berry",
-            "#C789B8"
-          ],
-          [
-            "Verde",
-            "#9DDE42"
-          ],
-          [
-            "Café",
-            "#D1A76C"
-          ],
-          [
-            "Lila suave",
-            "#F3C2FE"
-          ]
+          ["Frutilla", "#DD7A96"],
+          ["Berry", "#C789B8"],
+          ["Verde", "#9DDE42"],
+          ["Café", "#D1A76C"],
+          ["Lila suave", "#F3C2FE"]
         ],
         "blocks": [
           {
             "k": "img",
-            "src": "juicy6.jpg",
+            "src": "juicy6.webp",
             "span": 12,
-            "ar": "1032/632",
+            "ar": "1015/617",
             "fit": "contain",
-            "bg": "#000",
+            "bg": "#F6D2DC",
+            "pad": "clamp(20px, 5vw, 72px)",
             "cap": "Strawberry",
             "alt": "Juicy: sabor Strawberry"
           },
           {
             "k": "img",
-            "src": "juicy7.jpg",
+            "src": "juicy7.webp",
             "span": 4,
-            "ar": "1032/632",
+            "ar": "1015/617",
             "fit": "contain",
-            "bg": "#000",
+            "bg": "#EED6EA",
+            "pad": "clamp(14px, 2.4vw, 32px)",
             "cap": "Berry Smoothie",
             "alt": "Juicy: Berry Smoothie"
           },
           {
             "k": "img",
-            "src": "juicy8.jpg",
+            "src": "juicy8.webp",
             "span": 4,
-            "ar": "1032/632",
+            "ar": "1015/617",
             "fit": "contain",
-            "bg": "#000",
+            "bg": "#E0F2C4",
+            "pad": "clamp(14px, 2.4vw, 32px)",
             "cap": "Green Smoothie",
             "alt": "Juicy: Green Smoothie"
           },
           {
             "k": "img",
-            "src": "juicy9.jpg",
+            "src": "juicy9.webp",
             "span": 4,
-            "ar": "1032/632",
+            "ar": "1015/617",
             "fit": "contain",
-            "bg": "#000",
+            "bg": "#F1E2CD",
+            "pad": "clamp(14px, 2.4vw, 32px)",
             "cap": "Coffee Milk",
             "alt": "Juicy: Coffee Milk"
           },
           {
             "k": "img",
-            "src": "juicy1.jpg",
+            "src": "juicy1.webp",
             "span": 6,
-            "ar": "1032/632",
+            "ar": "1015/617",
             "fit": "contain",
-            "bg": "#000",
+            "bg": "#FBEAFF",
+            "pad": "clamp(14px, 2.4vw, 32px)",
             "cap": "Menú de sabores",
             "alt": "Juicy: menú de sabores"
           },
           {
             "k": "img",
-            "src": "juicy2.jpg",
+            "src": "juicy2.webp",
             "span": 6,
-            "ar": "1032/632",
+            "ar": "1015/617",
             "fit": "contain",
-            "bg": "#000",
+            "bg": "#FBEAFF",
+            "pad": "clamp(14px, 2.4vw, 32px)",
             "cap": "Hover: la columna se expande",
             "alt": "Juicy: columna expandida al pasar el cursor"
           },
-          {
-            "k": "pal",
-            "span": 8,
-            "layout": "h"
-          },
+          { "k": "pal", "span": 8, "layout": "h" },
           {
             "k": "type",
             "span": 4,
@@ -569,7 +465,11 @@
       }
     ],
     "palette": "Paleta de color",
-    "type": "Tipografía"
+    "type": "Tipografía",
+    "screens": "Pantallas",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "nextProject": "Siguiente proyecto"
   },
   "tools": {
     "label": "Herramientas",
@@ -623,7 +523,7 @@
   "footer": {
     "rights": "© 2026 Abigail Caricato",
     "colophon": "Compuesto en Bodoni Moda, Hanken Grotesk y DM Mono.",
-    "note": "Los proyectos son conceptuales: marcas y encargos ficticios.",
+    "note": "Los proyectos rotulados «Concepto» son ejercicios personales.",
     "top": "Volver arriba"
   }
 }

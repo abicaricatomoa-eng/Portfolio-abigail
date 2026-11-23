@@ -22,4 +22,9 @@ Next.js estático (`output: 'export'`) + TypeScript + GSAP. Español (`/es/`) e 
 - Cada sección declara `data-hdr="paper|ink|magenta"`: el header toma ese color.
 - Entradas: `[data-reveal]` y `<Lines>` con un solo IntersectionObserver (`components/Reveals.tsx`).
 - Carga (`Loader`) → `markReady()` → entrada de la portada (`onReady`, `lib/ready.ts`).
-- Proyectos: brandboard en `components/Brandboard.tsx` (datos en `messages/*.json` y `content/work.ts`). Dibujos de herramientas: `components/tools/ToolDemo.tsx` (herramientas); ids de gradiente por instancia.
+- Proyectos: ficha en `components/Work.tsx` (barra fija, intro, brandboard, siguiente proyecto) y brandboard en
+  `components/Brandboard.tsx` (datos en `messages/*.json` y `content/work.ts`, mismo layout en es/en). Texto atenuado de la
+  ficha con `--dim` (AA sobre los cinco colores), no con `opacity`. Dibujos de herramientas: `components/tools/ToolDemo.tsx`;
+  ids de gradiente por instancia.
+- En la ficha, las entradas al hacer scroll y la barra de progreso son CSS (`animation-timeline`), dentro de `@supports` y
+  `prefers-reduced-motion: no-preference`; sin soporte se ven en su estado final.
