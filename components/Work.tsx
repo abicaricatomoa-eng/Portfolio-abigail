@@ -1,50 +1,40 @@
 'use client';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { flushSync } from 'react-dom';
-import { gsap, finePointer, reducedMotion } from '@/lib/gsap';
+import { gsap, reducedMotion } from '@/lib/gsap';
 import type { Dict } from '@/lib/i18n';
-import { asset } from '@/lib/site';
-import { PROJECT_META, type Block, type Cover, type Pair } from '@/content/work';
+import { PROJECT_META, type Block, type Pair } from '@/content/work';
 import { Brandboard } from './Brandboard';
+import { CardArt, CoverImg } from './Cover';
 import { Lines, RegMark, SectionLabel } from './print';
 import './work.css';
 
 const nn = (n: number) => String(n).padStart(2, '0');
 
-function CoverImg({ c, lazy = true }: { c: Cover; lazy?: boolean }) {
-  return (
-    <span className="cover" style={{ background: c.bg, padding: c.pad }}>
-      <img src={asset(`/trabajo/${c.src}`)} alt="" loading={lazy ? 'lazy' : undefined} decoding="async" style={{ objectFit: c.fit ?? 'cover', objectPosition: c.pos ?? '50% 50%', mixBlendMode: c.blend }} />
-    </span>
-  );
-}
-
 export function Work({ t }: { t: Dict['work'] }) {
   const list = t.projects;
-  const preview = useRef<HTMLDivElement>(null);
+  const gallery = useRef<HTMLOListElement>(null);
   const dlg = useRef<HTMLDialogElement>(null);
   const wipe = useRef<HTMLDivElement>(null);
   const title = useRef<HTMLHeadingElement>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
-  const [hover, setHover] = useState(-1);
   const [open, setOpen] = useState(0);
 
-  // the preview card follows the pointer and leans with its speed
+  // depth: inside each card the layers drift at their own speed while it crosses the screen (motion allowed only)
   useEffect(() => {
-    const el = preview.current;
-    if (!el || !finePointer()) return;
-    const qx = gsap.quickTo(el, 'x', { duration: 0.7, ease: 'expo.out' });
-    const qy = gsap.quickTo(el, 'y', { duration: 0.7, ease: 'expo.out' });
-    const qr = gsap.quickTo(el, 'rotation', { duration: 0.9, ease: 'expo.out' });
-    let lx = 0;
-    const move = (e: PointerEvent) => {
-      qx(e.clientX + 32); qy(e.clientY - 180);
-      if (!reducedMotion()) qr(gsap.utils.clamp(-7, 7, (e.clientX - lx) * 0.4));
-      lx = e.clientX;
-    };
-    addEventListener('pointermove', move, { passive: true });
-    return () => removeEventListener('pointermove', move);
+    const root = gallery.current;
+    if (!root) return;
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      root.querySelectorAll<HTMLElement>('.wk-media').forEach((m) => {
+        m.querySelectorAll<HTMLElement>('[data-depth]').forEach((el) => {
+          const d = parseFloat(el.dataset.depth || '1');
+          gsap.fromTo(el, { yPercent: -5 * d }, { yPercent: 5 * d, ease: 'none', scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: true } });
+        });
+      });
+    });
+    return () => mm.revert();
   }, []);
 
   const enter = (d: HTMLDialogElement, delay = 0) =>
@@ -118,39 +108,38 @@ export function Work({ t }: { t: Dict['work'] }) {
     <section id="trabajo" className="work sec on-paper" data-hdr="paper">
       <div className="wrap">
         <header className="work-head">
-          <SectionLabel n="02" text={t.label} />
-          <Lines text={t.title} className="display h-sec" />
+          <div>
+            <SectionLabel n="01" text={t.label} />
+            <Lines text={t.title} className="display h-sec" after={<> <sup className="work-count" aria-hidden="true">({nn(list.length)})</sup></>} />
+          </div>
           <p className="lead" data-reveal>{t.lead}</p>
         </header>
 
-        <ol className="wk-list" onMouseLeave={() => setHover(-1)}>
-          {list.map((w, i) => (
-            <li key={w.id} data-reveal style={{ ['--d' as string]: `${i * 0.05}s` }}>
-              <button
-                type="button" className="wk-row" data-cursor="view" aria-haspopup="dialog"
-                onMouseEnter={() => setHover(i)} onFocus={() => setHover(i)} onBlur={() => setHover(-1)}
-                onClick={(e) => show(i, e.currentTarget, e)}
-              >
-                <span className="wk-i">{nn(i + 1)}</span>
-                <span className="wk-thumb" aria-hidden="true"><CoverImg c={PROJECT_META[w.id].cover} /></span>
-                <span className="wk-name display">{w.name}</span>
-                <span className="wk-meta">
-                  <span>{w.discipline}</span>
-                  <span>{w.client}</span>
-                  {w.tag && <span className="wk-tag">{w.tag}</span>}
-                  <span className="wk-sw" aria-hidden="true">{w.palette.map(([, hex]) => <i key={hex} style={{ background: hex }} />)}</span>
-                </span>
-                <span className="wk-go"><span className="sr-only">{t.open}</span><span aria-hidden="true">→</span></span>
-              </button>
-            </li>
-          ))}
+        <ol className="wk-grid" ref={gallery}>
+          {list.map((w, i) => {
+            const m = PROJECT_META[w.id];
+            return (
+              <li key={w.id} className={`wk-card is-${m.size}${m.shift ? ' is-shift' : ''}`}>
+                <button type="button" className="wk-link" data-cursor="view" aria-haspopup="dialog" onClick={(e) => show(i, e.currentTarget, e)}>
+                  <span className="wk-media" data-reveal="clip" aria-hidden="true">
+                    <span className="wk-zoom"><CardArt c={m.card} /></span>
+                  </span>
+                  <span className="wk-info" data-reveal>
+                    <span className="wk-i">{nn(i + 1)}</span>
+                    <span className="wk-name display">{w.name}</span>
+                    <span className="wk-meta">
+                      <span>{w.discipline}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>{w.client}</span>
+                      {w.tag && <span className="wk-tag">{w.tag}</span>}
+                    </span>
+                    <span className="wk-go"><span className="sr-only">{t.open}</span><span aria-hidden="true">→</span></span>
+                  </span>
+                </button>
+              </li>
+            );
+          })}
         </ol>
-      </div>
-
-      <div className={`wk-preview${hover >= 0 ? ' is-on' : ''}`} ref={preview} aria-hidden="true">
-        {list.map((w, i) => (
-          <div key={w.id} className={`wk-pv${i === hover ? ' is-active' : ''}`}><CoverImg c={PROJECT_META[w.id].cover} /></div>
-        ))}
       </div>
 
       <dialog ref={dlg} className="case" aria-labelledby="case-title" style={{ ['--cbg' as string]: meta.bg, ['--cfg' as string]: meta.fg } as CSSProperties}>

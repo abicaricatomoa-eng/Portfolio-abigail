@@ -1,11 +1,11 @@
-.story { padding: 0; }
+.story { padding: 0; background-image: radial-gradient(50% 45% at 88% 8%, rgb(209 10 110 / 0.08), rgb(209 10 110 / 0) 70%); }
 .st-pin { position: relative; }
 .st-track { display: grid; gap: clamp(72px, 12vw, 140px); padding: clamp(96px, 14vw, 180px) var(--gutter); }
 .st-head { max-width: 760px; }
 .st-panel { position: relative; display: grid; grid-template-columns: 1fr; gap: 28px; padding-top: clamp(84px, 20vw, 150px); }
 .st-num {
   position: absolute; top: 0; left: -0.04em; font-size: clamp(120px, 26vw, 300px); line-height: 0.8; letter-spacing: -0.06em;
-  color: transparent; -webkit-text-stroke: 1px rgb(239 235 228 / 0.22); pointer-events: none; font-style: italic;
+  color: transparent; -webkit-text-stroke: 1px rgb(238 232 222 / 0.2); pointer-events: none; font-style: italic;
 }
 .st-text { position: relative; display: grid; gap: 18px; align-content: start; max-width: 520px; }
 .st-tool { display: inline-flex; align-items: center; gap: 10px; font: 500 12px/1 var(--font-m); letter-spacing: 0.18em; text-transform: uppercase; color: var(--m-light); }

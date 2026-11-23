@@ -10,7 +10,7 @@ export function Process({ t }: { t: Dict['process'] }) {
     <section id="proceso" className="process sec on-paper" data-hdr="paper">
       <div className="wrap">
         <header className="pc-head">
-          <SectionLabel n="04" text={t.label} />
+          <SectionLabel n="03" text={t.label} />
           <Lines text={t.title} className="display h-sec" />
         </header>
         <ol className="pc-sheet" data-reveal>
@@ -68,7 +68,7 @@ export function Contact({ t }: { t: Dict['contact'] }) {
           <p className="ct-body" data-reveal>{t.body}</p>
           <div className="ct-act" data-reveal>
             {CONTACT.email && (
-              <a className="btn btn-solid ct-mail" href={`mailto:${CONTACT.email}`}><span>{t.email}</span><span className="arr" aria-hidden="true">→</span></a>
+              <a className="btn btn-solid ct-mail" href={`mailto:${CONTACT.email}`} data-magnetic><span>{t.email}</span><span className="arr" aria-hidden="true">→</span></a>
             )}
             {CONTACT.email && <p className="ct-addr mono">{CONTACT.email}</p>}
             {links.length > 0 && (
@@ -84,20 +84,25 @@ export function Contact({ t }: { t: Dict['contact'] }) {
   );
 }
 
-export function Footer({ t }: { t: Dict['footer'] }) {
+// The last sheet: colophon on top, the signature printed across the full width of the page.
+export function Footer({ t, name }: { t: Dict['footer']; name: [string, string] }) {
   return (
     <footer className="ft on-ink" data-hdr="ink">
-      <div className="wrap ft-in">
-        <p className="ft-mono display" aria-hidden="true">A<em>C</em></p>
-        <div className="ft-meta">
-          <p>{t.rights}</p>
-          <p>{t.colophon}</p>
-          <p>{t.note}</p>
+      <div className="wrap">
+        <div className="ft-in">
+          <div className="ft-meta">
+            <p>{t.rights}</p>
+            <p>{t.colophon}</p>
+            <p>{t.note}</p>
+          </div>
+          <div className="ft-end">
+            <ColorBar dark />
+            <a href="#inicio" className="ft-top" data-magnetic>{t.top} <span aria-hidden="true">↑</span></a>
+          </div>
         </div>
-        <div className="ft-end">
-          <ColorBar dark />
-          <a href="#inicio" className="ft-top">{t.top} <span aria-hidden="true">↑</span></a>
-        </div>
+        <p className="ft-sign display" aria-hidden="true" data-reveal="clip">
+          <span>{name[0]}</span> <em>{name[1]}</em>
+        </p>
       </div>
     </footer>
   );

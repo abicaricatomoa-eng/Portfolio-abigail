@@ -2,22 +2,27 @@
    The site is a print run: paper and ink sheets, crop marks, registration targets, a CMYK colour bar,
    and the name printed in three plates that come into register. Magenta (process magenta) is the light. */
 :root {
-  --ink: #0d0c0e;
-  --ink-2: #16141a;
-  --ink-3: #1f1c23;
-  --paper: #eeebe5;
-  --paper-2: #e5e1d9;
-  --on-ink: #efebe4;
-  --on-ink-muted: #a29daa;
-  --on-paper: #0d0c0e;
-  --on-paper-muted: #57525d;
-  --line-ink: rgb(239 235 228 / 0.14);
-  --line-paper: rgb(13 12 14 / 0.16);
-  --c: #00a0df;
-  --m: #e4007c;
-  --y: #ffe100;
-  --m-deep: #b0005f; /* magenta text on paper (AA) */
-  --m-light: #ff5aa8; /* magenta text on ink (AA) */
+  /* warm black and warm paper: one family of neutrals (lib/palette.ts repeats these values) */
+  --ink: #13110f;
+  --ink-2: #1c1916;
+  --ink-3: #25211d;
+  --paper: #ede8df;
+  --paper-2: #e3dcd0;
+  --on-ink: #eee8de;
+  --on-ink-muted: #a39a8e; /* 6.8:1 on ink */
+  --on-paper: #13110f;
+  --on-paper-muted: #5c554d; /* 6.0:1 on paper */
+  --line-ink: rgb(238 232 222 / 0.13);
+  --line-paper: rgb(19 17 15 / 0.15);
+  /* process inks, tuned to sit on that paper rather than glow on a screen */
+  --c: #1a9bd7;
+  --m: #d10a6e;
+  --y: #f7d417;
+  --m-deep: #a0065a; /* magenta text on paper: 6.4:1 */
+  --m-light: #ee7fa8; /* magenta text on ink: 7.4:1 */
+  --velvet: radial-gradient(120% 130% at 88% 0%, #c40a68 0%, #a0065a 38%, #6a0a3c 78%, #4a0a2b 100%);
+  /* the magenta light falling on a dark sheet: barely there, never under small text */
+  --glow: radial-gradient(60% 55% at 12% 30%, rgb(209 10 110 / 0.11), rgb(209 10 110 / 0) 70%);
   --font-d: var(--font-display), 'Bodoni 72', Didot, Georgia, serif;
   --font-s: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
   --font-m: var(--font-mono), ui-monospace, Menlo, Consolas, monospace;
@@ -119,12 +124,30 @@ ul, ol { list-style: none; }
 /* ---------- reveals (one IntersectionObserver, CSS transitions; visible without JS or with reduced motion) ---------- */
 .js [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 1.1s var(--ease); transition-delay: var(--d, 0s); }
 .js [data-reveal].is-in { opacity: 1; transform: none; }
+/* clip: the element rises out of the sheet instead of fading in */
+.js [data-reveal='clip'] { opacity: 1; transform: none; clip-path: inset(100% 0% 0% 0%); transition: clip-path 1.6s var(--ease); transition-delay: var(--d, 0s); }
+.js [data-reveal='clip'].is-in { clip-path: inset(0% 0% 0% 0%); }
 .js .lines .ln { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
 .js .lines .ln > span { display: inline-block; transform: translateY(105%); transition: transform 1.2s var(--ease); transition-delay: calc(var(--i, 0) * 0.09s + var(--d, 0s)); }
 .js .lines.is-in .ln > span { transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal], .js .lines .ln > span { opacity: 1; transform: none; transition: none; }
+  .js [data-reveal='clip'] { clip-path: none; }
 }
+
+/* paper grain over the whole page: static, under the pointer, off when more contrast is asked for */
+body::after {
+  content: ''; position: fixed; inset: 0; z-index: 500; pointer-events: none; opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-contrast: more), (forced-colors: active) { body::after { display: none; } }
+
+/* a small project cover (components/Cover.tsx): marquee and next-project card */
+.cover { display: block; width: 100%; height: 100%; overflow: hidden; isolation: isolate; }
+.cover img { display: block; width: 100%; height: 100%; }
+
+/* magnetic controls: the offset is set by <Magnetic>, fine pointers only */
+[data-magnetic] { will-change: transform; }
 
 /* custom cursor: fine pointers only, set by <Cursor> */
 .has-cursor, .has-cursor a, .has-cursor button { cursor: none; }

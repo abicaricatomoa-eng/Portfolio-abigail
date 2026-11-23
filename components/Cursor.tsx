@@ -12,18 +12,30 @@ export function Cursor({ view }: { view: string }) {
     const dot = el.querySelector<HTMLElement>('.cursor-dot')!, ring = el.querySelector<HTMLElement>('.cursor-ring')!;
     const dx = gsap.quickTo(dot, 'x', { duration: 0.08 }), dy = gsap.quickTo(dot, 'y', { duration: 0.08 });
     const rx = gsap.quickTo(ring, 'x', { duration: 0.45, ease: 'expo.out' }), ry = gsap.quickTo(ring, 'y', { duration: 0.45, ease: 'expo.out' });
-    const move = (e: PointerEvent) => {
-      dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
-      const t = e.target as Element | null;
+    let px = -1, py = -1, raf = 0;
+    const read = (t: Element | null) => {
       el.classList.toggle('is-view', !!t?.closest('[data-cursor="view"]'));
       el.classList.toggle('is-link', !!t?.closest('a, button, [role="button"], label'));
+    };
+    const move = (e: PointerEvent) => {
+      px = e.clientX; py = e.clientY;
+      dx(px); dy(py); rx(px); ry(py);
+      read(e.target as Element | null);
       el.classList.remove('is-hidden');
+    };
+    // the page can slide under a still pointer: read what is under it again
+    const scroll = () => {
+      if (raf || px < 0) return;
+      raf = requestAnimationFrame(() => { raf = 0; read(document.elementFromPoint(px, py)); });
     };
     const leave = () => el.classList.add('is-hidden');
     addEventListener('pointermove', move, { passive: true });
+    addEventListener('scroll', scroll, { passive: true });
     document.addEventListener('pointerleave', leave);
     return () => {
       removeEventListener('pointermove', move);
+      removeEventListener('scroll', scroll);
+      cancelAnimationFrame(raf);
       document.removeEventListener('pointerleave', leave);
       document.documentElement.classList.remove('has-cursor');
     };
